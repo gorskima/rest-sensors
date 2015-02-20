@@ -1,0 +1,3 @@
+w1-devices-path: /sys/bus/w1/devices
+i2c-bmp085-path: /sys/bus/i2c/devices/1-0077
+dht22-path: /home/pi/dht22-reader/dht22 -p 17
