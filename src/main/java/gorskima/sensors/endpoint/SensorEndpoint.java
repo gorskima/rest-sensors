@@ -44,13 +44,5 @@ public class SensorEndpoint {
     public Measurement getSensorMeasurement(@PathVariable("id") String id, @PathVariable("index") Integer index) {
         return sensorRepository.getSensor(id).getMeasurementProviders().get(index).getMeasurement();
     }
-    @ControllerAdvice
-    private static class JsonpAdvice extends AbstractJsonpResponseBodyAdvice {
-
-        public JsonpAdvice() {
-	        super("callback");
-		    }
-
-		    }
 
 }
