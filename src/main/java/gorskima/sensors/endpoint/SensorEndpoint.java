@@ -34,13 +34,13 @@ public class SensorEndpoint {
 		return sensorRepository.getSensor(id);
 	}
 
-    @RequestMapping(value = "/{id}/measurement", method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}/measurements", method = RequestMethod.GET)
     public List<Measurement> getSensorMeasurements(@PathVariable("id") String id) {
         return sensorRepository.getSensor(id).getMeasurementProviders().stream()
                 .map(MeasurementProvider::getMeasurement).collect(Collectors.toList());
     }
 
-    @RequestMapping(value = "/{id}/measurement/{index}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}/measurements/{index}", method = RequestMethod.GET)
     public Measurement getSensorMeasurement(@PathVariable("id") String id, @PathVariable("index") Integer index) {
         return sensorRepository.getSensor(id).getMeasurementProviders().get(index).getMeasurement();
     }
