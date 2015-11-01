@@ -24,11 +24,13 @@ NAME=sensors
 DAEMON=/usr/bin/java
 PIDFILE=/var/run/$NAME.pid
 SCRIPTNAME=/etc/init.d/$NAME
-CHDIR=/home/pi/sensors
+CHDIR=/opt/sensors
 CHUID=pi
-LOGFILE=$CHDIR/sensors.log
+LOGDIR=/var/log/sensors
+LOGFILE=$LOGDIR/sensors.log
 PORT=8080
-DAEMON_ARGS="-jar sensors-0.1-SNAPSHOT.jar --server.port=$PORT --spring.config.location=. --logging.file=$LOGFILE"
+DAEMON_ARGS="-jar $CHDIR/sensors.jar --server.port=$PORT --spring.config.location=$CHDIR \
+	--spring.config.name=sensors-config --logging.file=$LOGFILE"
 
 # Exit if the package is not installed
 [ -x "$DAEMON" ] || exit 0
@@ -49,6 +51,9 @@ DAEMON_ARGS="-jar sensors-0.1-SNAPSHOT.jar --server.port=$PORT --spring.config.l
 #
 do_start()
 {
+	# Create log directory if missing
+	test -d "$LOGDIR" || (mkdir $LOGDIR && chown $CHUID:$CHUID $LOGDIR)
+
 	# Return
 	#   0 if daemon has been started
 	#   1 if daemon was already running
