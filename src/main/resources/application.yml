@@ -1,3 +1,0 @@
-w1-devices-path: sensors/sys/bus/w1/devices
-i2c-bmp085-path: sensors/sys/bus/i2c/devices/1-0077
-dht22-path: sensors/dht22.sh
