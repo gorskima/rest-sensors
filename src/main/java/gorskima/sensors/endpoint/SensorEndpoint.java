@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +19,7 @@ import gorskima.sensors.model.Sensor;
 import gorskima.sensors.service.SensorRepository;
 
 @RestController
-@RequestMapping("/sensors")
+@RequestMapping(value = "/sensors", produces = MediaType.APPLICATION_JSON_VALUE)
 public class SensorEndpoint {
 
 	@Autowired
