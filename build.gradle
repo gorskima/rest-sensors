@@ -34,7 +34,3 @@ dependencies {
 	testCompile('junit:junit:4.11')
 	testCompile('com.jayway.jsonpath:json-path:2.0.0')
 }
-
-task wrapper(type: Wrapper) {
-	gradleVersion = '1.12'
-}
